@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { Star, ShoppingBag, Heart } from "lucide-react";
 import { useCartStore } from "@/lib/cart-store";
 import type { Product } from "@/lib/products";
@@ -34,10 +35,17 @@ export default function ProductDetail({ product }: { product: Product }) {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10">
       <div className="grid md:grid-cols-2 gap-10">
-        <div className="aspect-[3/4] bg-gradient-to-b from-blush to-cream rounded-2xl flex items-center justify-center relative">
-          <span className="text-8xl">🌺</span>
+        <div className="relative aspect-[3/4] rounded-2xl overflow-hidden">
+          <Image
+            src="/model.jpg"
+            alt={product.name}
+            fill
+            className="object-cover object-top"
+            sizes="(max-width: 768px) 100vw, 50vw"
+            priority
+          />
           {discount > 0 && (
-            <span className="absolute top-4 left-4 bg-rose text-white text-sm font-medium px-3 py-1 rounded-full">
+            <span className="absolute top-4 left-4 bg-rose text-white text-sm font-medium px-3 py-1 rounded-full z-10">
               -{discount}% OFF
             </span>
           )}

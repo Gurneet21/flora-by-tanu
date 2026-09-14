@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { categories } from "@/lib/products";
 
@@ -12,17 +13,25 @@ export default function CategoryGrid() {
           <Link
             key={cat.slug}
             href={`/category/${cat.slug}`}
-            className="group bg-white rounded-xl border border-sand p-6 text-center hover:shadow-lg hover:border-rose/40 transition-all duration-300"
+            className="group bg-white rounded-xl border border-sand overflow-hidden hover:shadow-lg hover:border-rose/40 transition-all duration-300"
           >
-            <div className="w-20 h-20 mx-auto mb-4 bg-blush rounded-full flex items-center justify-center text-3xl group-hover:scale-110 transition-transform">
-              {cat.icon}
+            <div className="relative aspect-square bg-gradient-to-b from-blush to-cream overflow-hidden">
+              <Image
+                src="/model.jpg"
+                alt={cat.name}
+                fill
+                className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                sizes="(max-width: 768px) 50vw, 25vw"
+              />
             </div>
-            <h3 className="font-semibold text-charcoal group-hover:text-rose-dark transition-colors">
-              {cat.name}
-            </h3>
-            <p className="text-xs text-taupe mt-1 hidden sm:block">
-              {cat.description}
-            </p>
+            <div className="p-4 text-center">
+              <h3 className="font-semibold text-charcoal group-hover:text-rose-dark transition-colors">
+                {cat.name}
+              </h3>
+              <p className="text-xs text-taupe mt-1 hidden sm:block">
+                {cat.description}
+              </p>
+            </div>
           </Link>
         ))}
       </div>

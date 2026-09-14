@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Hero() {
@@ -29,8 +30,15 @@ export default function Hero() {
           </div>
         </div>
         <div className="flex-1 flex justify-center">
-          <div className="w-72 h-96 sm:w-80 sm:h-[28rem] bg-gradient-to-b from-blush-dark/40 to-rose/20 rounded-2xl flex items-center justify-center">
-            <span className="text-6xl">🌸</span>
+          <div className="w-72 h-96 sm:w-80 sm:h-[28rem] rounded-2xl overflow-hidden shadow-lg">
+            <Image
+              src="/model.jpg"
+              alt="Flora by Tanu - Lace & Elegance Collection"
+              width={320}
+              height={448}
+              className="w-full h-full object-cover object-top"
+              priority
+            />
           </div>
         </div>
       </div>
